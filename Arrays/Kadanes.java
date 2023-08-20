@@ -1,20 +1,30 @@
-public class Kadanes {
+import java.util.*;
+
+class Kadanes {
     public static void main(String[] args) {
-        int num[] = { 2, 4, 6, 8, 9, 10 };
-        kadanesAlgo(num);
+        int arr[] = { -3, -4, -6, -8, -10, -11, -1 };
+        kadanes(arr);
+
+        int Min = Integer.MIN_VALUE;
+        for (int i = 0; i < arr.length; i++) {
+            if (Min < arr[i]) {
+                Min = arr[i];
+            }
+        }
+        System.out.println("Minimum sum is: " + Min);
+
     }
 
-    public static void kadanesAlgo(int num[]) {
-        int currnum = 0;
-        int maximum = Integer.MIN_VALUE;
-        for (int i = 0; i < num.length; i++) {
-            currnum = currnum + num[i];
-            if (currnum < 0) {
-                currnum = 0;
+    public static void kadanes(int arr[]) {
+        int currsum = 0;
+        int maxsum = Integer.MIN_VALUE;
+        for (int i = 0; i < arr.length; i++) {
+            currsum = currsum + arr[i];
+            if (currsum < 0) {
+                currsum = 0;
             }
-            maximum = Math.max(maximum, currnum);
-
+            maxsum = Math.max(maxsum, currsum);
         }
-        System.out.println("Maximum sum is: " + maximum);
+        System.out.println("Maximum sum is: " + maxsum);
     }
 }
